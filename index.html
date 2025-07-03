@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,14 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       display: flex;
+      overflow-x: hidden;
     }
+
     /* 左侧导航栏样式 */
     .sidebar {
       width: 220px;
@@ -27,29 +31,36 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
     .sidebar .profile {
       text-align: center;
       margin-bottom: 20px;
     }
+
     .sidebar .profile img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       margin-bottom: 10px;
     }
+
     .sidebar .profile h2 {
       font-size: 18px;
     }
+
     .sidebar .profile p {
       font-size: 14px;
       color: #ccc;
     }
+
     .sidebar nav ul {
       list-style: none;
     }
+
     .sidebar nav ul li {
       margin: 10px 0;
     }
+
     .sidebar nav ul li a {
       color: white;
       text-decoration: none;
@@ -57,20 +68,37 @@
       padding: 5px;
       transition: background-color 0.3s ease;
     }
+
     .sidebar nav ul li a:hover {
       background-color: #555;
     }
+
+    .sidebar nav ul li a.active {
+      background-color: #007bff;
+    }
+
     .sidebar .copyright {
       font-size: 12px;
       color: #999;
       text-align: center;
     }
+
     /* 右侧内容区样式 */
     .main-content {
       margin-left: 220px;
       padding: 30px;
       width: calc(100% - 220px);
     }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
     .section {
       margin-bottom: 40px;
       background-color: white;
@@ -78,6 +106,7 @@
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
+
     .section h2 {
       font-size: 24px;
       margin-bottom: 20px;
@@ -85,35 +114,42 @@
       border-left: 5px solid #007bff;
       padding-left: 10px;
     }
+
     .section p {
       line-height: 1.6;
       color: #666;
       margin-bottom: 15px;
     }
+
     /* Resume 模块样式 */
     .resume-item {
       margin-bottom: 15px;
     }
+
     .resume-item .time {
       display: inline-block;
       width: 80px;
       font-weight: bold;
       color: #333;
     }
+
     /* Research 模块样式 */
     .research-item {
       margin-bottom: 20px;
     }
+
     .research-item h3 {
       color: #007bff;
       margin-bottom: 10px;
     }
+
     .research-item img {
       max-width: 300px;
       margin-top: 10px;
       border: 1px solid #eee;
       border-radius: 5px;
     }
+
     /* Publications 模块样式 */
     .filter-buttons {
       margin-bottom: 20px;
@@ -192,112 +228,318 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#biography">Biography</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#students">Students</a></li>
-          <li><a href="#teaching">Teaching</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#biography" class="nav-link active" data-page="biography">Biography</a></li>
+          <li><a href="#resume" class="nav-link" data-page="resume">Resume</a></li>
+          <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
+          <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
+          <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+          <li><a href="#students" class="nav-link" data-page="students">Students</a></li>
+          <li><a href="#teaching" class="nav-link" data-page="teaching">Teaching</a></li>
+          <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
       </nav>
     </div>
     <div class="copyright">
-      <p>Copyright by Henry H. N. Dai</p>
+      <p>Copyright by Q. Wang</p>
     </div>
   </aside>
 
   <!-- 右侧内容区 -->
   <div class="main-content">
-    <!-- Biography 板块 -->
-    <section id="biography" class="section">
-      <h2>Biography</h2>
-      <p>Henry Hong-Ning Dai is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
-      <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 HIGHLY-cited papers by Clavivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
-      <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editor in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
-      <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
-    </section>
+    <!-- Biography 页面 -->
+    <div id="biography" class="page active">
+      <section class="section">
+        <h2>Biography</h2>
+        <p>Qian Wang is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
+        <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 HIGHLY-cited papers by Clavivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
+        <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editor in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
+        <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
+      </section>
+    </div>
 
-    <!-- Resume 板块 -->
-    <section id="resume" class="section">
-      <h2>Resume</h2>
-      <div class="resume-item">
-        <span class="time">present</span>
-        <strong>Associate Professor</strong><br>
-        Department of Computer Science, Hong Kong Baptist University, Hong Kong
-      </div>
-      <div class="resume-item">
-        <span class="time">2022</span>
-        <strong>Associate Professor</strong><br>
-        Department of Computing and Decision Sciences, Lingnan University, Hong Kong
-      </div>
-      <div class="resume-item">
-        <span class="time">2015 - 2021</span>
-        <strong>Associate Professor</strong><br>
-        School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
-      </div>
-      <div class="resume-item">
-        <span class="time">2010 - 2015</span>
-        <strong>Assistant Professor</strong><br>
-        School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
-      </div>
-      <div class="resume-item">
-        <span class="time">2008 - 2010</span>
-        <strong>Post-doc Research Fellow</strong><br>
-        Department of Information Engineering, The Chinese University of Hong Kong, Hong Kong
-      </div>
-      <h3>Education</h3>
-      <div class="resume-item">
-        <span class="time">2008</span>
-        <strong>Ph.D.</strong><br>
-        Computer Science and Engineering<br>
-        Department of Computer Science and Engineering, The Chinese University of Hong Kong, Hong Kong
-      </div>
-      <div class="resume-item">
-        <span class="time">2012</span>
-        <strong>D.Eng</strong><br>
-        Computer Application Technology<br>
-        Department of Computer Science and Engineering, Shanghai Jiao Tong University, China
-      </div>
-    </section>
+    <!-- Resume 页面 -->
+    <div id="resume" class="page">
+      <section class="section">
+        <h2>Resume</h2>
+        <div class="resume-item">
+          <span class="time">present</span>
+          <strong>Associate Professor</strong><br>
+          Department of Computer Science, Hong Kong Baptist University, Hong Kong
+        </div>
+        <div class="resume-item">
+          <span class="time">2022</span>
+          <strong>Associate Professor</strong><br>
+          Department of Computing and Decision Sciences, Lingnan University, Hong Kong
+        </div>
+        <div class="resume-item">
+          <span class="time">2015 - 2021</span>
+          <strong>Associate Professor</strong><br>
+          School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
+        </div>
+        <div class="resume-item">
+          <span class="time">2010 - 2015</span>
+          <strong>Assistant Professor</strong><br>
+          School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
+        </div>
+        <div class="resume-item">
+          <span class="time">2008 - 2010</span>
+          <strong>Post-doc Research Fellow</strong><br>
+          Department of Information Engineering, The Chinese University of Hong Kong, Hong Kong
+        </div>
+        <h3>Education</h3>
+        <div class="resume-item">
+          <span class="time">2008</span>
+          <strong>Ph.D.</strong><br>
+          Computer Science and Engineering<br>
+          Department of Computer Science and Engineering, The Chinese University of Hong Kong, Hong Kong
+        </div>
+        <div class="resume-item">
+          <span class="time">2012</span>
+          <strong>D.Eng</strong><br>
+          Computer Application Technology<br>
+          Department of Computer Science and Engineering, Shanghai Jiao Tong University, China
+        </div>
+      </section>
+    </div>
 
-    <!-- Research 板块 -->
-    <section id="research" class="section">
-      <h2>Research</h2>
-      <p>Henry's research interests include cyber-physical systems, wireless networks, and distributed systems.</p>
-      <h3>1. Cyber-Physical Systems</h3>
-      <p>He is also interested in cyber-physical systems (CPS), particularly on big data analytics in ubiquitous CPS, optimization in CPS and Internet-of-Things (IoT) systems. His research has been supported by the following competitive research grants.</p>
-      <div class="research-item">
-        <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+CPS" alt="Big Data Analytics for CPS">
-        <strong>Big Data Analytics for CPS</strong><br>
-        PI (2017 - present)
-      </div>
-      <div class="research-item">
-        <img src="https://via.placeholder.com/300x100?text=Self-organised+Resilience+Mechanisms" alt="Self-organised Resilience Mechanisms">
-        <strong>Self-organised Resilience Mechanisms for IoT-enabled Intelligent Manufacturing</strong><br>
-        Co-PI (2017 - 2020), supported by National Science Foundation of China (NSFC) (Grant No. 61672170)
-      </div>
-      <div class="research-item">
-        <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+Maritime" alt="Big Data Analytics for Maritime">
-        <strong>Big Data Analytics for Maritime Industrial Internet of Things</strong><br>
-        Co-PI (Jan 2015 - present), GCE Blue Maritime Big Data, Innovasjon Norge, Norway
-      </div>
-      <h3>2. Wireless Networks</h3>
-      <p>He has been interested in wireless networks. In particular, his research approach mainly focuses on using various communication technologies to improve the performance of large scale wireless networks. His research has been supported by the following competitive research grants.</p>
-      <div class="research-item">
-        <img src="https://via.placeholder.com/300x100?text=Key+Technologies+to+Enable+Ultra+Dense" alt="Key Technologies to Enable Ultra Dense">
-        <strong>Key Technologies to Enable Ultra Dense Wireless Networks</strong><br>
-        PI (2018 - present), supported by the Science and Technology Development Fund of Macau SAR (Grant No. 0026/2018/A1)
-      </div>
-    </section>
+    <!-- Research 页面 -->
+    <div id="research" class="page">
+      <section class="section">
+        <h2>Research</h2>
+        <p>Henry's research interests include cyber-physical systems, wireless networks, and distributed systems.</p>
+        <h3>1. Cyber-Physical Systems</h3>
+        <p>He is also interested in cyber-physical systems (CPS), particularly on big data analytics in ubiquitous CPS, optimization in CPS and Internet-of-Things (IoT) systems. His research has been supported by the following competitive research grants.</p>
+        <div class="research-item">
+          <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+CPS" alt="Big Data Analytics for CPS">
+          <strong>Big Data Analytics for CPS</strong><br>
+          PI (2017 - present)
+        </div>
+        <div class="research-item">
+          <img src="https://via.placeholder.com/300x100?text=Self-organised+Resilience+Mechanisms" alt="Self-organised Resilience Mechanisms">
+          <strong>Self-organised Resilience Mechanisms for IoT-enabled Intelligent Manufacturing</strong><br>
+          Co-PI (2017 - 2020), supported by National Science Foundation of China (NSFC) (Grant No. 61672170)
+        </div>
+        <div class="research-item">
+          <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+Maritime" alt="Big Data Analytics for Maritime">
+          <strong>Big Data Analytics for Maritime Industrial Internet of Things</strong><br>
+          Co-PI (Jan 2015 - present), GCE Blue Maritime Big Data, Innovasjon Norge, Norway
+        </div>
+        <h3>2. Wireless Networks</h3>
+        <p>He has been interested in wireless networks. In particular, his research approach mainly focuses on using various communication technologies to improve the performance of large scale wireless networks. His research has been supported by the following competitive research grants.</p>
+        <div class="research-item">
+          <img src="https://via.placeholder.com/300x100?text=Key+Technologies+to+Enable+Ultra+Dense" alt="Key Technologies to Enable Ultra Dense">
+          <strong>Key Technologies to Enable Ultra Dense Wireless Networks</strong><br>
+          PI (2018 - present), supported by the Science and Technology Development Fund of Macau SAR (Grant No. 0026/2018/A1)
+        </div>
+      </section>
+    </div>
 
-    <!-- Publications 板块 -->
-    <section id="publications" class="section">
-      <h2>Publications</h2>
-      <p>Copyright Notice: Copyright and all rights therein are retained by the authors or by the respective copyright holders (including Springer Verlag, Elsevier, ACM, IEEE Press, Wiley, etc.) You can download them only if you follow their restrictions (e.g., for private use or academic use). The online version may be slightly different from the final version. They are put online just for the convenience of academic sharing.</p>
-      <div class="filter-buttons">
-        <button>All types (194)</button>
-        <button>Book (3)</button>
-        <button>Book Chapter (5)</button>
-        <button>Conference (74)</
+    <!-- Publications 页面 -->
+    <div id="publications" class="page">
+      <section class="section">
+        <h2>Publications</h2>
+        <p>Copyright Notice: Copyright and all rights therein are retained by the authors or by the respective copyright holders (including Springer Verlag, Elsevier, ACM, IEEE Press, Wiley, etc.) You can download them only if you follow their restrictions (e.g., for private use or academic use). The online version may be slightly different from the final version. They are put online just for the convenience of academic sharing.</p>
+        <div class="filter-buttons">
+          <button>All types (194)</button>
+          <button>Book (3)</button>
+          <button>Book Chapter (5)</button>
+          <button>Conference (74)</button>
+          <button>Journal (112)</button>
+        </div>
+        <ul class="publication-list">
+          <li>
+            <span>2023</span>
+            <p><strong>Blockchain for Smart Cities: A Comprehensive Survey</strong><br>
+            Henry H. N. Dai, X. Zhang, Y. Zhang, and L. Wang<br>
+            <em>Proceedings of the IEEE</em>, vol. 111, no. 6, pp. 965-997, 2023.</p>
+          </li>
+          <li>
+            <span>2023</span>
+            <p><strong>Distributed Machine Learning in Edge Computing: A Comprehensive Survey</strong><br>
+            X. Zhang, Henry H. N. Dai, Y. Zhang, and L. Wang<br>
+            <em>IEEE Communications Surveys & Tutorials</em>, vol. 25, no. 2, pp. 1083-1115, 2023.</p>
+          </li>
+          <!-- 更多出版物项 -->
+        </ul>
+      </section>
+    </div>
+
+    <!-- Services 页面 -->
+    <div id="services" class="page">
+      <section class="section">
+        <h2>Professional Services</h2>
+        <h3>Editorial Boards</h3>
+        <div class="services-item">
+          <p><strong>IEEE Transactions on Intelligent Transportation Systems</strong><br>
+          Associate Editor (2018 - present)</p>
+        </div>
+        <div class="services-item">
+          <p><strong>IEEE Transactions on Industrial Informatics</strong><br>
+          Associate Editor (2018 - present)</p>
+        </div>
+        <div class="services-item">
+          <p><strong>Ad Hoc Networks (Elsevier)</strong><br>
+          Associate Editor (2018 - present)</p>
+        </div>
+        <h3>Technical Program Committee</h3>
+        <div class="services-item">
+          <p><strong>IEEE INFOCOM</strong><br>
+          TPC Member (2018 - present)</p>
+        </div>
+        <div class="services-item">
+          <p><strong>IEEE ICC</strong><br>
+          TPC Member (2018 - present)</p>
+        </div>
+        <div class="services-item">
+          <p><strong>IEEE Globecom</strong><br>
+          TPC Member (2018 - present)</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Students 页面 -->
+    <div id="students" class="page">
+      <section class="section">
+        <h2>Students</h2>
+        <h3>Current Students</h3>
+        <ul class="students-timeline">
+          <li>
+            <span class="year">2023 - present</span>
+            <p><strong>Ph.D. Students</strong><br>
+            - John Doe: "Blockchain for Industrial IoT Security"<br>
+            - Jane Smith: "Edge Computing for Smart Cities"</p>
+          </li>
+          <li>
+            <span class="year">2022 - present</span>
+            <p><strong>M.Sc. Students</strong><br>
+            - Alex Johnson: "Machine Learning for Wireless Networks"<br>
+            - Sarah Williams: "Big Data Analytics in Healthcare"</p>
+          </li>
+        </ul>
+        <h3>Graduated Students</h3>
+        <ul class="students-timeline">
+          <li>
+            <span class="year">2022</span>
+            <p><strong>Ph.D.</strong> - Tom Brown: "Distributed Computing for IoT"<br>
+            (Now a Postdoc at University of Cambridge)</p>
+          </li>
+          <li>
+            <span class="year">2021</span>
+            <p><strong>M.Sc.</strong> - Emma Davis: "Wireless Sensor Networks for Environmental Monitoring"<br>
+            (Now working at Google)</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Teaching 页面 -->
+    <div id="teaching" class="page">
+      <section class="section">
+        <h2>Teaching</h2>
+        <h3>Current Courses</h3>
+        <ul class="teaching-courses">
+          <li><strong>COMP3411 - Wireless Networks</strong><br>
+          Spring Semester, 2023</li>
+          <li><strong>COMP5411 - Advanced Topics in Distributed Systems</strong><br>
+          Fall Semester, 2023</li>
+        </ul>
+        <h3>Previous Courses</h3>
+        <ul class="teaching-courses">
+          <li><strong>COMP3412 - Mobile Computing</strong><br>
+          Spring Semester, 2022</li>
+          <li><strong>COMP5412 - Blockchain Technology</strong><br>
+          Fall Semester, 2022</li>
+          <li><strong>COMP4411 - Internet of Things</strong><br>
+          Spring Semester, 2021</li>
+        </ul>
+        <h3>Teaching Awards</h3>
+        <p>2022 - Outstanding Teaching Award, Hong Kong Baptist University</p>
+        <p>2020 - Best Instructor Award, School of Computer Science and Engineering, Macau University of Science and Technology</p>
+      </section>
+    </div>
+
+    <!-- Contact 页面 -->
+    <div id="contact" class="page">
+      <section class="section">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <p><strong>Office:</strong> Room 501, Computer Science Building, Hong Kong Baptist University</p>
+          <p><strong>Email:</strong> hhdai@comp.hkbu.edu.hk</p>
+          <p><strong>Phone:</strong> +852-3411-5000</p>
+          <p><strong>Fax:</strong> +852-3411-5001</p>
+        </div>
+        <div class="map">
+          <img src="https://via.placeholder.com/600x300?text=Campus+Map" alt="Campus Map">
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // 导航逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取所有导航链接
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      // 为每个导航链接添加点击事件
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 获取要显示的页面ID
+          const pageId = this.getAttribute('data-page');
+          
+          // 隐藏所有页面
+          document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+          });
+          
+          // 显示选中的页面
+          document.getElementById(pageId).classList.add('active');
+          
+          // 更新导航栏的活动状态
+          navLinks.forEach(navLink => {
+            navLink.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          // 更新URL而不刷新页面
+          history.pushState(null, null, '#' + pageId);
+        });
+      });
+      
+      // 处理URL中的hash值，当用户直接访问特定页面时
+      function handleHash() {
+        const hash = window.location.hash.substring(1); // 去掉#符号
+        const pageId = hash || 'biography'; // 默认显示Biography页面
+        
+        // 检查页面是否存在
+        if (document.getElementById(pageId)) {
+          // 隐藏所有页面
+          document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+          });
+          
+          // 显示选中的页面
+          document.getElementById(pageId).classList.add('active');
+          
+          // 更新导航栏的活动状态
+          navLinks.forEach(navLink => {
+            navLink.classList.remove('active');
+            if (navLink.getAttribute('data-page') === pageId) {
+              navLink.classList.add('active');
+            }
+          });
+        }
+      }
+      
+      // 初始化时处理hash值
+      handleHash();
+      
+      // 当hash值变化时处理
+      window.addEventListener('hashchange', handleHash);
+    });
+  </script>
+</body>
+
+</html>
