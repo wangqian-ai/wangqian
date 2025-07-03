@@ -4,343 +4,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>个人主页</title>
-  <!-- 引入CSS样式 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Personal Homepage</title>
   <style>
-    /* 自定义全局样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    .header {
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      color: #0A3D91;
-    }
-
-    .nav-link {
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: #0A3D91;
-    }
-
-    .hero {
-      background-image: url('https://source.unsplash.com/random/1600x900/?ai');
-      background-size: cover;
-      background-position: center;
-      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    }
+
+    /* 左侧导航栏样式 */
+    .sidebar {
+      width: 220px;
+      background-color: #333;
       color: white;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-content {
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: #0A3D91;
-      position: relative;
-    }
-
-    .section-title h2::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: #0A3D91;
-    }
-
-    .project-card {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .project-card .card-body {
       padding: 20px;
+      position: fixed;
+      height: 100vh;
     }
 
-    .project-card h5 {
-      color: #0A3D91;
+    .sidebar .profile {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    .publication-item {
-      margin-bottom: 30px;
-    }
-
-    .publication-item h5 {
-      color: #0A3D91;
+    .sidebar .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       margin-bottom: 10px;
     }
 
-    .publication-item p {
-      margin-bottom: 5px;
+    .sidebar .profile h2 {
+      font-size: 18px;
     }
 
-    .contact-info {
-      background-color: #F5F7FA;
-      padding: 40px;
-      border-radius: 15px;
+    .sidebar .profile p {
+      font-size: 14px;
+      color: #ccc;
     }
 
-    .contact-info i {
-      color: #0A3D91;
-      margin-right: 10px;
+    .sidebar nav ul {
+      list-style: none;
     }
 
-    .footer {
-      background-color: #0A3D91;
+    .sidebar nav ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar nav ul li a {
       color: white;
-      text-align: center;
-      padding: 20px 0;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar nav ul li a:hover {
+      background-color: #555;
+    }
+
+    /* 右侧内容区样式 */
+    .main-content {
+      margin-left: 220px;
+      padding: 30px;
+      width: calc(100% - 220px);
+    }
+
+    .section {
+      margin-bottom: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+      border-left: 5px solid #007bff;
+      padding-left: 10px;
+    }
+
+    .section p {
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .awards-item {
+      margin-bottom: 15px;
+    }
+
+    .awards-item span {
+      display: inline-block;
+      width: 80px;
+      font-weight: bold;
+      color: #333;
     }
   </style>
 </head>
 
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-expand-lg header">
-    <div class="container">
-      <a class="navbar-brand" href="#">Your Name</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#hero">首页</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">关于</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">项目</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#publications">成果</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">联系</a>
-          </li>
-        </ul>
-      </div>
+  <!-- 左侧导航栏 -->
+  <aside class="sidebar">
+    <div class="profile">
+      <img src="https://via.placeholder.com/100" alt="Profile Photo">
+      <h2>Henry Hong-Ning Dai</h2>
+      <p>Hong Kong Baptist University</p>
     </div>
-  </nav>
+    <nav>
+      <ul>
+        <li><a href="#biography">Biography</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#students">Students</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-  <!-- 英雄区域 -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1>探索人工智能的无限可能</h1>
-      <p>我是一名专注于人工智能与机器学习的研究者，致力于推动技术创新。</p>
-      <a href="#about" class="btn btn-primary mt-3">了解更多</a>
-    </div>
-  </section>
+  <!-- 右侧内容区 -->
+  <div class="main-content">
+    <!--  Biography 板块 -->
+    <section id="biography" class="section">
+      <h2>Biography</h2>
+      <p>Henry Hong-Ning Dai is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
+      <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 HIGHLY-cited papers by Clavivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
+      <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editor in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
+      <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
+    </section>
 
-  <!-- 关于部分 -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>关于我</h2>
+    <!--  Honors and Awards 板块 -->
+    <section id="awards" class="section">
+      <h2>Honors and Awards</h2>
+      <div class="awards-item">
+        <span>2023</span> Top-100 New Star in AI 2000 Scholar by AMiner<br>
+        <span></span>Henry Hong-Ning Dai was included in Top-100 New Star in AI 2000 Scholar (in the field of Internet of Things of Computer Science). (https://www.aminer.cn/ai2000)
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="https://source.unsplash.com/random/600x400/?person" alt="个人照片" class="img-fluid rounded">
-        </div>
-        <div class="col-md-6">
-          <p>我是一名人工智能领域的研究者，目前在清华大学计算机科学与技术系担任助理教授。我的研究主要集中在计算机视觉、自然语言处理和机器人学习的交叉领域，致力于开发能够理解和交互复杂环境的智能系统。</p>
-          <p>我在麻省理工学院获得博士学位，曾在斯坦福大学人工智能实验室从事博士后研究。我的研究成果已在CVPR、NeurIPS、ICML等顶级会议上发表，并获得多项学术奖项。</p>
-          <a href="#" class="btn btn-outline-primary mt-3">下载简历</a>
-        </div>
+      <div class="awards-item">
+        <span>2022</span> Inclusion to top 2% scientists for career-long impact
       </div>
-    </div>
-  </section>
+      <!-- 可继续添加更多奖项内容 -->
+    </section>
 
-  <!-- 项目部分 -->
-  <section class="section bg-light" id="projects">
-    <div class="container">
-      <div class="section-title">
-        <h2>研究项目</h2>
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <div class="col">
-          <div class="project-card">
-            <img src="https://source.unsplash.com/random/300x200/?ai-project" class="card-img-top" alt="项目1">
-            <div class="card-body">
-              <h5 class="card-title">多模态智能交互系统</h5>
-              <p class="card-text">结合视觉和语言理解，开发能够与人类自然交互的智能系统。</p>
-              <a href="#" class="btn btn-primary">查看详情</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="project-card">
-            <img src="https://source.unsplash.com/random/300x200/?ai-project" class="card-img-top" alt="项目2">
-            <div class="card-body">
-              <h5 class="card-title">自主机器人导航与避障</h5>
-              <p class="card-text">研究未知环境中机器人的自主导航和动态障碍物规避技术。</p>
-              <a href="#" class="btn btn-primary">查看详情</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="project-card">
-            <img src="https://source.unsplash.com/random/300x200/?ai-project" class="card-img-top" alt="项目3">
-            <div class="card-body">
-              <h5 class="card-title">AI辅助医疗诊断系统</h5>
-              <p class="card-text">利用深度学习技术，辅助医生进行疾病诊断和预测。</p>
-              <a href="#" class="btn btn-primary">查看详情</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 成果部分 -->
-  <section class="section" id="publications">
-    <div class="container">
-      <div class="section-title">
-        <h2>学术成果</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="publication-item">
-            <h5>A Novel Approach to Visual Understanding</h5>
-            <p><strong>作者:</strong> Your Name, Co-Author1, Co-Author2</p>
-            <p><strong>会议:</strong> IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2023</p>
-            <a href="#" class="btn btn-outline-primary">查看论文</a>
-          </div>
-          <div class="publication-item">
-            <h5>Efficient Language Models for Resource-Constrained Devices</h5>
-            <p><strong>作者:</strong> Co-Author1, Your Name, Co-Author2</p>
-            <p><strong>会议:</strong> Neural Information Processing Systems (NeurIPS), 2022</p>
-            <a href="#" class="btn btn-outline-primary">查看论文</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="publication-item">
-            <h5>Reinforcement Learning for Robotic Manipulation</h5>
-            <p><strong>作者:</strong> Co-Author1, Co-Author2, Your Name</p>
-            <p><strong>会议:</strong> International Conference on Robotics and Automation (ICRA), 2021</p>
-            <a href="#" class="btn btn-outline-primary">查看论文</a>
-          </div>
-          <div class="publication-item">
-            <h5>Advanced Algorithms in Machine Learning</h5>
-            <p><strong>期刊:</strong> Journal of Artificial Intelligence Research</p>
-            <p><strong>年份:</strong> 2020</p>
-            <a href="#" class="btn btn-outline-primary">查看论文</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 联系部分 -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>联系我</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="contact-info">
-            <div class="mb-3">
-              <i class="bi bi-envelope"></i>
-              <a href="mailto:your.email@example.com">your.email@example.com</a>
-            </div>
-            <div class="mb-3">
-              <i class="bi bi-linkedin"></i>
-              <a href="https://www.linkedin.com/in/your-profile/">LinkedIn 个人主页</a>
-            </div>
-            <div class="mb-3">
-              <i class="bi bi-github"></i>
-              <a href="https://github.com/yourusername">GitHub 仓库</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <form>
-            <div class="mb-3">
-              <label for="name" class="form-label">姓名</label>
-              <input type="text" class="form-control" id="name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">邮箱</label>
-              <input type="email" class="form-control" id="email">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">消息</label>
-              <textarea class="form-control" id="message" rows="5"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">发送消息</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 页脚 -->
-  <footer class="footer">
-    <p>&copy; 2024 Your Name. 保留所有权利。</p>
-  </footer>
-
-  <!-- 引入JavaScript脚本 -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 可根据实际需求，继续添加 Resume、Research 等板块 -->
+  </div>
 </body>
 
 </html>
