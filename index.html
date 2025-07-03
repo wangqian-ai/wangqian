@@ -386,74 +386,207 @@
   </section>
 </div>
 
-<!-- Resume 页面 -->
-<div id="resume" class="page">
-  <section class="section">
-    <!-- 模块标题：模仿目标样式的红色标题 -->
-<!--     <h2 style="color: #e74c3c; margin-bottom: 20px; font-size: 24px;">Resume</h2> -->
+<!-- Resume 页面 - 修复排版版 -->
+<div id="resume" class="page active">
+  <section class="section" style="background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     
     <!-- 工作经历 -->
     <div style="margin-bottom: 40px;">
-      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">Working Experience</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-          <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">present</span>
-          <strong>Lecturer</strong><br>
-          School of Art and Design, Guangdong University of Technology, Guangzhou, China
-        </li>
-        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-          <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2022–2023</span>
-          <strong>Postdoctoral Research Fellow</strong><br>
-          School of Design, Hong Kong Polytechnic University, Hong Kong
-        </li>
-        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-          <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2022</span>
-          <strong>Research Assistant</strong><br>
-          Department of Computing, Hong Kong Polytechnic University, Hong Kong
-        </li>
-        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-          <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2021–2022</span>
-          <strong>Algorithm Intern</strong><br>
-          Zhuhai Shixi Technology Co., Ltd., Zhuhai, China
-        </li>
-        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-          <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2017–2019</span>
-          <strong>IT Teacher</strong><br>
-          Hangzhou Middle School Affiliated to Beijing Normal University, Hangzhou, China
-        </li>
-      </ul>
+      <h2 style="color: #333; font-size: 24px; border-left: 5px solid #007bff; padding-left: 10px; margin-bottom: 20px;">
+        Working Experience
+      </h2>
+      <!-- 用 flex 布局实现年份+内容对齐 -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex;">
+          <!-- 年份列（固定宽度，右对齐） -->
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            present
+          </div>
+          <!-- 内容列 -->
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Lecturer</h3>
+            <p style="color: #666; margin: 0;">
+              School of Art and Design, Guangdong University of Technology, Guangzhou, China
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2022–2023
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Postdoctoral Research Fellow</h3>
+            <p style="color: #666; margin: 0;">
+              School of Design, Hong Kong Polytechnic University, Hong Kong
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2022
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Research Assistant</h3>
+            <p style="color: #666; margin: 0;">
+              Department of Computing, Hong Kong Polytechnic University, Hong Kong
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2021–2022
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Algorithm Intern</h3>
+            <p style="color: #666; margin: 0;">
+              Zhuhai Shixi Technology Co., Ltd., Zhuhai, China
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2017–2019
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">IT Teacher</h3>
+            <p style="color: #666; margin: 0;">
+              Hangzhou Middle School Affiliated to Beijing Normal University, Hangzhou, China
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <!-- 教育背景（模仿目标样式的红色分隔线） -->
-    <div style="border-top: 2px solid #e74c3c; padding-top: 20px; margin-bottom: 40px;"></div>
-    <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">Education</h3>
-    <ul style="list-style: none; padding: 0;">
-      <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-        <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2019–2022</span>
-        <strong>Ph.D. in Computer Vision</strong><br>
-        Macau University of Science and Technology, Macau
-      </li>
-      <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-        <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2013–2016</span>
-        <strong>Master in Educational Science and Technology</strong><br>
-        Zhejiang University of Technology, Hangzhou, China (Ranked 1st)
-      </li>
-      <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-        <span style="position: absolute; left: 0; top: 2px; color: #27ae60; font-weight: bold;">2008–2012</span>
-        <strong>Bachelor in Electronic Information Engineering</strong><br>
-        Yangtze University, Jingzhou, China (Top 10%)
-      </li>
-    </ul>
+
+    <!-- 教育背景（红色分隔线） -->
+    <hr style="border: none; border-top: 2px solid #e74c3c; margin: 40px 0;">
+
+    <!-- 教育背景 -->
+    <div>
+      <h2 style="color: #333; font-size: 24px; border-left: 5px solid #007bff; padding-left: 10px; margin-bottom: 20px;">
+        Education
+      </h2>
+      <!-- 同样用 flex 布局对齐 -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2019–2022
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Ph.D. in Computer Vision</h3>
+            <p style="color: #666; margin: 0;">
+              Macau University of Science and Technology, Macau
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2013–2016
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Master in Educational Science and Technology</h3>
+            <p style="color: #666; margin: 0;">
+              Zhejiang University of Technology, Hangzhou, China (Ranked 1st)
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="width: 80px; text-align: right; color: #777; font-weight: bold; padding-right: 20px;">
+            2008–2012
+          </div>
+          <div>
+            <h3 style="color: #333; margin: 0 0 5px 0;">Bachelor in Electronic Information Engineering</h3>
+            <p style="color: #666; margin: 0;">
+              Yangtze University, Jingzhou, China (Top 10%)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 </div>
 
-      <!-- Research 页面 -->
-      <div id="research" class="page">
-        <section class="section">
-          <h2>Research</h2>
-          <p>Add your research content here...</p>
-        </section>
+<!-- Research 页面 -->
+<div id="research" class="page">
+  <section class="section">
+    <!-- 模块标题：模仿目标样式的青色背景+白色文字 -->
+    <div style="background-color: #4ecdc4; color: white; padding: 20px; margin-bottom: 20px;">
+      <h2 style="font-size: 28px; margin: 0;">Research</h2>
+    </div>
+    
+    <!-- 研究方向概述 -->
+    <p style="margin-bottom: 20px; color: #666;">
+      Qian Wang's research interests include <strong>computer vision</strong>, <strong>AI painting</strong>, and <strong>computational art</strong>.
+    </p>
+    
+    <!-- 研究方向1：Computer Vision -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">1. Computer Vision</h3>
+      <p style="color: #666; margin-bottom: 15px;">
+        Focuses on AI-generated artwork, image processing, and educational technology applications. 
+        Her work explores the intersection of technology and art, particularly in developing 
+        <strong>AI painting methodologies</strong> and <strong>image deblurring techniques</strong>.
+      </p>
+      <!-- 项目列表（模仿目标样式的卡片布局） -->
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>AI Painting Algorithm Optimization</strong><br>
+          <span style="color: #999; font-size: 14px;">PI (2023 - present)</span>
+        </div>
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>Image Deblurring for Art Restoration</strong><br>
+          <span style="color: #999; font-size: 14px;">Co-PI (2022 - 2024, supported by Guangdong Art Innovation Fund)</span>
+        </div>
       </div>
+    </div>
+    
+    <!-- 研究方向2：AI Painting -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">2. AI Painting</h3>
+      <p style="color: #666; margin-bottom: 15px;">
+        Investigates the integration of AI in creative processes, with a focus on 
+        <strong>human-like logic in stroke-by-stroke painting</strong> and <strong>computational art theory</strong>.
+      </p>
+      <!-- 项目列表 -->
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>LogicStrokePainter: AI Human-like Painting Research</strong><br>
+          <span style="color: #999; font-size: 14px;">PI (2025 - 2027, supported by National Natural Science Foundation Youth Fund)</span>
+        </div>
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>AI-Generated Art Curation System</strong><br>
+          <span style="color: #999; font-size: 14px;">Co-PI (2024 - 2026, supported by Guangdong University of Technology Innovation Project)</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 研究方向3：Computational Art -->
+    <div>
+      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">3. Computational Art</h3>
+      <p style="color: #666; margin-bottom: 15px;">
+        Explores the use of computational tools to enhance artistic expression, including 
+        <strong>digital art creation frameworks</strong> and <strong>artistic style transfer</strong>.
+      </p>
+      <!-- 项目列表 -->
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>Computational Art Style Transfer Platform</strong><br>
+          <span style="color: #999; font-size: 14px;">PI (2023 - 2025, supported by Guangdong Cultural and Creative Project)</span>
+        </div>
+        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
+          <strong>AI-Assisted Digital Art Creation Tool</strong><br>
+          <span style="color: #999; font-size: 14px;">Co-PI (2022 - 2024, supported by School of Art and Design Innovation Fund)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
       <!-- Publications 页面 -->
       <div id="publications" class="page">
