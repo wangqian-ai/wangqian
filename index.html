@@ -269,10 +269,55 @@
       </div>
     </div>
 
-<!-- 替换原有的 biography 模块内容 -->
+<!-- 替换原有的 biography 模块内容（含完整高亮样式） -->
 <div id="biography" class="page active">
   <section class="section">
-    <h2>Biography</h2>
+    <!-- 新增：在当前模块内嵌入高亮所需样式（确保优先级） -->
+    <style>
+     .highlight {
+        color: #e74c3c; /* 醒目红色突出核心内容 */
+        font-weight: 700;
+      }
+     .award {
+        color: #c0392b; /* 深红色突出奖项名称 */
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+     .patent {
+        color: #d35400; /* 橙色突出专利相关内容 */
+        font-style: italic;
+        font-weight: 600;
+      }
+     .award-year {
+        display: inline-block;
+        width: 80px; /* 固定宽度让年份对齐 */
+        color: #2c3e50;
+        font-weight: 600;
+      }
+     .divider {
+        border: none;
+        border-top: 2px solid #eee;
+        margin: 40px 0; /* 分隔线上下间距 */
+      }
+     .award-list {
+        list-style: none;
+        padding-left: 0;
+      }
+     .award-list li {
+        margin: 12px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+     .award-list li::before {
+        content: "•";
+        color: #3498db; /* 蓝色圆点标记 */
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 1.2em;
+      }
+    </style>
     <p>
       Qian Wang is a lecturer at the School of Art and Design, Guangdong University of Technology. 
       Her academic journey and professional pursuits revolve around the intersection of 
