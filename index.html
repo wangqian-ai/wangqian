@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Homepage</title>
+  <title>Qian Wang - Personal Homepage</title>
   <style>
     * {
       margin: 0;
@@ -26,6 +26,9 @@
       padding: 20px;
       position: fixed;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .sidebar .profile {
@@ -69,6 +72,12 @@
       background-color: #555;
     }
 
+    .sidebar .copyright {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+    }
+
     /* 右侧内容区样式 */
     .main-content {
       margin-left: 220px;
@@ -98,15 +107,98 @@
       margin-bottom: 15px;
     }
 
-    .awards-item {
+    /* Resume 模块样式 */
+    .resume-item {
       margin-bottom: 15px;
     }
 
-    .awards-item span {
+    .resume-item .time {
       display: inline-block;
       width: 80px;
       font-weight: bold;
       color: #333;
+    }
+
+    /* Research 模块样式 */
+    .research-item {
+      margin-bottom: 20px;
+    }
+
+    .research-item h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .research-item img {
+      max-width: 300px;
+      margin-top: 10px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+
+    /* Publications 模块样式 */
+    .filter-buttons {
+      margin-bottom: 20px;
+    }
+
+    .filter-buttons button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .publication-list {
+      list-style: none;
+    }
+
+    .publication-list li {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .publication-list li span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Services 模块样式 */
+    .services-item {
+      margin-bottom: 10px;
+    }
+
+    /* Students 模块样式 */
+    .students-timeline {
+      margin-left: 20px;
+    }
+
+    .students-timeline li {
+      margin-bottom: 10px;
+    }
+
+    .students-timeline .year {
+      display: inline-block;
+      width: 60px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Teaching 模块样式 */
+    .teaching-courses {
+      margin-left: 20px;
+    }
+
+    .teaching-courses li {
+      margin-bottom: 5px;
+    }
+
+    /* Contact 模块样式 */
+    .contact-info p {
+      margin-bottom: 5px;
     }
   </style>
 </head>
@@ -114,28 +206,33 @@
 <body>
   <!-- 左侧导航栏 -->
   <aside class="sidebar">
-    <div class="profile">
-      <img src="https://via.placeholder.com/100" alt="Profile Photo">
-      <h2>Henry Hong-Ning Dai</h2>
-      <p>Hong Kong Baptist University</p>
+    <div>
+      <div class="profile">
+        <img src="https://via.placeholder.com/100" alt="Profile Photo">
+        <h2>Henry Hong-Ning Dai</h2>
+        <p>Hong Kong Baptist University</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#biography">Biography</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#students">Students</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#biography">Biography</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#students">Students</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="copyright">
+      <p>Copyright by Henry H. N. Dai</p>
+    </div>
   </aside>
 
   <!-- 右侧内容区 -->
   <div class="main-content">
-    <!--  Biography 板块 -->
+    <!-- Biography 板块 -->
     <section id="biography" class="section">
       <h2>Biography</h2>
       <p>Henry Hong-Ning Dai is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
@@ -144,21 +241,85 @@
       <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
     </section>
 
-    <!--  Honors and Awards 板块 -->
-    <section id="awards" class="section">
-      <h2>Honors and Awards</h2>
-      <div class="awards-item">
-        <span>2023</span> Top-100 New Star in AI 2000 Scholar by AMiner<br>
-        <span></span>Henry Hong-Ning Dai was included in Top-100 New Star in AI 2000 Scholar (in the field of Internet of Things of Computer Science). (https://www.aminer.cn/ai2000)
+    <!-- Resume 板块 -->
+    <section id="resume" class="section">
+      <h2>Resume</h2>
+      <div class="resume-item">
+        <span class="time">present</span>
+        <strong>Associate Professor</strong><br>
+        Department of Computer Science, Hong Kong Baptist University, Hong Kong
       </div>
-      <div class="awards-item">
-        <span>2022</span> Inclusion to top 2% scientists for career-long impact
+      <div class="resume-item">
+        <span class="time">2022</span>
+        <strong>Associate Professor</strong><br>
+        Department of Computing and Decision Sciences, Lingnan University, Hong Kong
       </div>
-      <!-- 可继续添加更多奖项内容 -->
+      <div class="resume-item">
+        <span class="time">2015 - 2021</span>
+        <strong>Associate Professor</strong><br>
+        School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
+      </div>
+      <div class="resume-item">
+        <span class="time">2010 - 2015</span>
+        <strong>Assistant Professor</strong><br>
+        School of Computer Science and Engineering (previously Faculty of Information Technology), Macau University of Science and Technology, Macau
+      </div>
+      <div class="resume-item">
+        <span class="time">2008 - 2010</span>
+        <strong>Post-doc Research Fellow</strong><br>
+        Department of Information Engineering, The Chinese University of Hong Kong, Hong Kong
+      </div>
+      <h3>Education</h3>
+      <div class="resume-item">
+        <span class="time">2008</span>
+        <strong>Ph.D.</strong><br>
+        Computer Science and Engineering<br>
+        Department of Computer Science and Engineering, The Chinese University of Hong Kong, Hong Kong
+      </div>
+      <div class="resume-item">
+        <span class="time">2012</span>
+        <strong>D.Eng</strong><br>
+        Computer Application Technology<br>
+        Department of Computer Science and Engineering, Shanghai Jiao Tong University, China
+      </div>
     </section>
 
-    <!-- 可根据实际需求，继续添加 Resume、Research 等板块 -->
-  </div>
-</body>
+    <!-- Research 板块 -->
+    <section id="research" class="section">
+      <h2>Research</h2>
+      <p>Henry's research interests include cyber-physical systems, wireless networks, and distributed systems.</p>
+      <h3>1. Cyber-Physical Systems</h3>
+      <p>He is also interested in cyber-physical systems (CPS), particularly on big data analytics in ubiquitous CPS, optimization in CPS and Internet-of-Things (IoT) systems. His research has been supported by the following competitive research grants.</p>
+      <div class="research-item">
+        <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+CPS" alt="Big Data Analytics for CPS">
+        <strong>Big Data Analytics for CPS</strong><br>
+        PI (2017 - present)
+      </div>
+      <div class="research-item">
+        <img src="https://via.placeholder.com/300x100?text=Self-organised+Resilience+Mechanisms" alt="Self-organised Resilience Mechanisms">
+        <strong>Self-organised Resilience Mechanisms for IoT-enabled Intelligent Manufacturing</strong><br>
+        Co-PI (2017 - 2020), supported by National Science Foundation of China (NSFC) (Grant No. 61672170)
+      </div>
+      <div class="research-item">
+        <img src="https://via.placeholder.com/300x100?text=Big+Data+Analytics+for+Maritime" alt="Big Data Analytics for Maritime">
+        <strong>Big Data Analytics for Maritime Industrial Internet of Things</strong><br>
+        Co-PI (Jan 2015 - present), GCE Blue Maritime Big Data, Innovasjon Norge, Norway
+      </div>
+      <h3>2. Wireless Networks</h3>
+      <p>He has been interested in wireless networks. In particular, his research approach mainly focuses on using various communication technologies to improve the performance of large scale wireless networks. His research has been supported by the following competitive research grants.</p>
+      <div class="research-item">
+        <img src="https://via.placeholder.com/300x100?text=Key+Technologies+to+Enable+Ultra+Dense" alt="Key Technologies to Enable Ultra Dense">
+        <strong>Key Technologies to Enable Ultra Dense Wireless Networks</strong><br>
+        PI (2018 - present), supported by the Science and Technology Development Fund of Macau SAR (Grant No. 0026/2018/A1)
+      </div>
+    </section>
 
-</html>
+    <!-- Publications 板块 -->
+    <section id="publications" class="section">
+      <h2>Publications</h2>
+      <p>Copyright Notice: Copyright and all rights therein are retained by the authors or by the respective copyright holders (including Springer Verlag, Elsevier, ACM, IEEE Press, Wiley, etc.) You can download them only if you follow their restrictions (e.g., for private use or academic use). The online version may be slightly different from the final version. They are put online just for the convenience of academic sharing.</p>
+      <div class="filter-buttons">
+        <button>All types (194)</button>
+        <button>Book (3)</button>
+        <button>Book Chapter (5)</button>
+        <button>Conference (74)</
