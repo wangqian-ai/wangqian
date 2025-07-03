@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qian Wang - Personal Homepage</title>
+  <title>Henry Hong-Ning Dai - Personal Homepage</title>
   <style>
     * {
       margin: 0;
@@ -17,6 +17,22 @@
       background-color: #f4f4f4;
       display: flex;
       overflow-x: hidden;
+      /* 添加背景图片 */
+      background-image: url('https://picsum.photos/id/1015/1920/1080');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* 添加半透明遮罩层 */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
 
     /* 左侧导航栏样式 */
@@ -30,6 +46,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      z-index: 100;
     }
 
     .sidebar .profile {
@@ -42,6 +59,7 @@
       height: 100px;
       border-radius: 50%;
       margin-bottom: 10px;
+      border: 3px solid #007bff;
     }
 
     .sidebar .profile h2 {
@@ -104,7 +122,14 @@
       background-color: white;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* 添加过渡效果 */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .section h2 {
@@ -148,6 +173,12 @@
       margin-top: 10px;
       border: 1px solid #eee;
       border-radius: 5px;
+      /* 添加图片过渡效果 */
+      transition: transform 0.3s ease;
+    }
+
+    .research-item img:hover {
+      transform: scale(1.03);
     }
 
     /* Publications 模块样式 */
@@ -162,6 +193,13 @@
       background-color: #f4f4f4;
       cursor: pointer;
       border-radius: 3px;
+      /* 添加按钮过渡效果 */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #007bff;
+      color: white;
     }
 
     .publication-list {
@@ -173,6 +211,12 @@
       padding: 10px;
       background-color: #f9f9f9;
       border-radius: 5px;
+      /* 添加列表项过渡效果 */
+      transition: background-color 0.3s ease;
+    }
+
+    .publication-list li:hover {
+      background-color: #f0f0f0;
     }
 
     .publication-list li span {
@@ -214,17 +258,38 @@
     .contact-info p {
       margin-bottom: 5px;
     }
+
+    /* 响应式设计 - 小屏幕设备 */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- 背景遮罩层 -->
+  <div class="overlay"></div>
+
   <!-- 左侧导航栏 -->
   <aside class="sidebar">
     <div>
       <div class="profile">
         <img src="https://via.placeholder.com/100" alt="Profile Photo">
-        <h2>Qian Wang</h2>
-        <p>GuangDong University of Technology</p>
+        <h2>Henry Hong-Ning Dai</h2>
+        <p>Hong Kong Baptist University</p>
       </div>
       <nav>
         <ul>
@@ -240,7 +305,7 @@
       </nav>
     </div>
     <div class="copyright">
-      <p>Copyright by Q. Wang</p>
+      <p>Copyright by Henry H. N. Dai</p>
     </div>
   </aside>
 
@@ -250,7 +315,7 @@
     <div id="biography" class="page active">
       <section class="section">
         <h2>Biography</h2>
-        <p>Qian Wang is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
+        <p>Henry Hong-Ning Dai is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
         <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 HIGHLY-cited papers by Clavivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
         <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editor in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
         <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
