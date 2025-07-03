@@ -681,13 +681,219 @@ function toggleDetail(projId) {
 }
 </script>
 
-      <!-- Publications 页面 -->
-      <div id="publications" class="page">
-        <section class="section">
-          <h2>Publications</h2>
-          <p>Add your publications content here...</p>
-        </section>
+<!-- Publications 页面 -->
+<div id="publications" class="page">
+  <section class="section">
+    <!-- 顶部筛选栏 -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+      <h2 style="color: #333; font-size: 26px; margin: 0;">Filter by type:</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <button class="filter-btn active" onclick="filterPub('all')">All (15)</button>
+        <button class="filter-btn" onclick="filterPub('journal')">Journal Articles (7)</button>
+        <button class="filter-btn" onclick="filterPub('conference')">Conference Papers (3)</button>
+        <button class="filter-btn" onclick="filterPub('patent')">Patents (2)</button>
       </div>
+    </div>
+
+    <!-- 论文列表 -->
+    <div class="pub-container">
+      <!-- 期刊论文 -->
+      <div class="pub-item" data-type="journal">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #e8f4f8; display: flex; align-items: center; justify-content: center; color: #4ecdc4; font-weight: bold;">
+            JOURNAL
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">Learning-based Artificial Intelligence Artwork: Methodology Taxonomy and Quality Evaluation</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Qian Wang, Hong-Ning Dai, Jinghua Yang, Cai Guo, Peter Childs, Maaike Kleinsmann, Yike Guo, Pan Wang
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              <em>ACM Comput. Surv.</em>, 2024 (Accepted, IF=23.8, ranked 1/143 in Computer Science Theory & Methods)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #e8f4f8; display: flex; align-items: center; justify-content: center; color: #4ecdc4; font-weight: bold;">
+            JOURNAL
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">Stroke-GAN Painter: Learning to Paint Artworks Using Stroke-Style Generative Adversarial Networks</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Qian Wang, Cai Guo, Hong-Ning Dai, and Ping Li
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              <em>Computational Visual Media</em>, 9: 787–806, 2023 (SCI, JCR Q1, IF=17.3) | 
+              <a href="https://doi.org/10.1007/s41095-022-0287-3" target="_blank" style="color: #e74c3c;">DOI</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #e8f4f8; display: flex; align-items: center; justify-content: center; color: #4ecdc4; font-weight: bold;">
+            JOURNAL
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">Variant-Depth Neural Networks for Deblurring Traffic Images in Intelligent Transportation Systems</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Qian Wang, Cai Guo, Hong-Ning Dai, Min Xia
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              <em>IEEE Transactions on Intelligent Transportation Systems</em>, 24(6): 5792-5802, 2023 (SCI, JCR Q1, IF=9.551)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #e8f4f8; display: flex; align-items: center; justify-content: center; color: #4ecdc4; font-weight: bold;">
+            JOURNAL
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">LNNet: Lightweight Nested Network for Motion Deblurring</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Cai Guo, Qian Wang, Hong-Ning Dai, Ping Li
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              <em>Journal of Systems Architecture</em>, May 2022 (SCI, JCR Q2, IF=5.836)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 会议论文 -->
+      <div class="pub-item" data-type="conference">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #fff0f0; display: flex; align-items: center; justify-content: center; color: #e74c3c; font-weight: bold;">
+            CONFERENCE
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">Self-stylized neural painter</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Qian Wang, Cai Guo, Hong-Ning Dai, Ping Li
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              ACM SIGGRAPH Conference, Tokyo Japan, 14-17 December 2021 (CCF A)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="conference">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #fff0f0; display: flex; align-items: center; justify-content: center; color: #e74c3c; font-weight: bold;">
+            CONFERENCE
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">Applying the mode of Spiral Sudoku Blended Learning in College English Teaching</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              Qian Wang, Hang Shao, Dengming Gao, Jiayan Zhang, Bin Yao, Chao Geng
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              International Symposium on Educational Technology, Wuhan, China, 27-29 July 2015
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专利 -->
+      <div class="pub-item" data-type="patent">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #f0f4e8; display: flex; align-items: center; justify-content: center; color: #27ae60; font-weight: bold;">
+            PATENT
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">一种人工智能绘画方法、装置及计算机存储介质</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              王倩
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              CN202210235023.5[P], 2022-04-12
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="patent">
+        <div style="display: flex; gap: 20px; padding: 15px; border-radius: 5px; background: #f9f9f9; margin-bottom: 15px;">
+          <div style="min-width: 100px; height: 100px; background: #f0f4e8; display: flex; align-items: center; justify-content: center; color: #27ae60; font-weight: bold;">
+            PATENT
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; color: #2c3e50;">一种深度图像中人体坐姿识别的方法、装置及存储介质</h3>
+            <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">
+              王倩，刘敏，贺荣峰
+            </p>
+            <p style="margin: 0; color: #3498db; font-size: 14px;">
+              CN202210084883.3[P], 2022-06-03
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 筛选交互与样式 -->
+<style>
+.filter-btn {
+  background: #f1f1f1;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.filter-btn.active {
+  background: #4ecdc4;
+  color: white;
+}
+.filter-btn:hover:not(.active) {
+  background: #e0e0e0;
+}
+.pub-container {
+  display: grid;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .pub-item > div {
+    flex-direction: column;
+  }
+  .pub-item > div > div:first-child {
+    min-width: auto;
+    width: 100%;
+    height: 40px;
+  }
+}
+</style>
+
+<script>
+function filterPub(type) {
+  // 更新按钮状态
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`.filter-btn[onclick="filterPub('${type}')"]`).classList.add('active');
+  
+  // 筛选论文
+  document.querySelectorAll('.pub-item').forEach(item => {
+    if (type === 'all' || item.getAttribute('data-type') === type) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+// 初始化显示全部
+filterPub('all');
+</script>
 
       <!-- Services 页面 -->
       <div id="services" class="page">
