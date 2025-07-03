@@ -512,81 +512,174 @@
   </section>
 </div>
 
-<!-- Research 页面 -->
-<div id="research" class="page">
-  <section class="section">
-    <!-- 模块标题：模仿目标样式的青色背景+白色文字 -->
-    <div style="background-color: #4ecdc4; color: white; padding: 20px; margin-bottom: 20px;">
-      <h2 style="font-size: 28px; margin: 0;">Research</h2>
-    </div>
+<!-- Research 页面 - 可展开版 -->
+<div id="research" class="page active">
+  <section class="section" style="background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     
+    <!-- 顶部背景栏（模仿目标样式） -->
+<!--     <div style="background-color: #4ecdc4; color: white; padding: 20px; margin-bottom: 20px;">
+      <h1 style="font-size: 28px; margin: 0;">Research</h1>
+    </div> -->
+
     <!-- 研究方向概述 -->
-    <p style="margin-bottom: 20px; color: #666;">
+    <p style="margin-bottom: 30px; color: #666;">
       Qian Wang's research interests include <strong>computer vision</strong>, <strong>AI painting</strong>, and <strong>computational art</strong>.
     </p>
-    
+
     <!-- 研究方向1：Computer Vision -->
     <div style="margin-bottom: 40px;">
-      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">1. Computer Vision</h3>
-      <p style="color: #666; margin-bottom: 15px;">
+      <h2 style="color: #333; font-size: 22px; border-left: 3px solid #4ecdc4; padding-left: 10px; margin-bottom: 15px;">
+        1. Computer Vision
+      </h2>
+      <p style="color: #666; margin-bottom: 20px;">
         Focuses on AI-generated artwork, image processing, and educational technology applications. 
         Her work explores the intersection of technology and art, particularly in developing 
         <strong>AI painting methodologies</strong> and <strong>image deblurring techniques</strong>.
       </p>
-      <!-- 项目列表（模仿目标样式的卡片布局） -->
-      <div style="display: flex; flex-direction: column; gap: 15px;">
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>AI Painting Algorithm Optimization</strong><br>
-          <span style="color: #999; font-size: 14px;">PI (2023 - present)</span>
+
+      <!-- 可展开项目列表 -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- 项目1：AI Painting Algorithm Optimization -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj1')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">AI Painting Algorithm Optimization</h3>
+            <span id="proj1Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">PI (2023 - present)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj1Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            The wide proliferation of various AI tools and artistic algorithms has fueled the exploration of AI painting. 
+            In this project, we focus on optimizing stroke-by-stroke painting logic to mimic human creativity. 
+            Key stages include: <strong>Style Analysis</strong>, <strong>Stroke Simulation</strong>, and <strong>Creative Refinement</strong>.
+          </div>
         </div>
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>Image Deblurring for Art Restoration</strong><br>
-          <span style="color: #999; font-size: 14px;">Co-PI (2022 - 2024, supported by Guangdong Art Innovation Fund)</span>
+
+        <!-- 项目2：Image Deblurring for Art Restoration -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj2')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">Image Deblurring for Art Restoration</h3>
+            <span id="proj2Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">Co-PI (2022 - 2024, supported by Guangdong Art Innovation Fund)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj2Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            Leveraging computer vision techniques, this project aims to restore blurred digital artworks. 
+            Research includes: <strong>Noise Reduction</strong>, <strong>Adaptive Deblurring</strong>, and <strong>Artistic Style Preservation</strong>. 
+            Funded by Guangdong Art Innovation Fund, it bridges technology and cultural heritage preservation.
+          </div>
         </div>
+
       </div>
     </div>
-    
+
     <!-- 研究方向2：AI Painting -->
     <div style="margin-bottom: 40px;">
-      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">2. AI Painting</h3>
-      <p style="color: #666; margin-bottom: 15px;">
+      <h2 style="color: #333; font-size: 22px; border-left: 3px solid #4ecdc4; padding-left: 10px; margin-bottom: 15px;">
+        2. AI Painting
+      </h2>
+      <p style="color: #666; margin-bottom: 20px;">
         Investigates the integration of AI in creative processes, with a focus on 
         <strong>human-like logic in stroke-by-stroke painting</strong> and <strong>computational art theory</strong>.
       </p>
-      <!-- 项目列表 -->
-      <div style="display: flex; flex-direction: column; gap: 15px;">
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>LogicStrokePainter: AI Human-like Painting Research</strong><br>
-          <span style="color: #999; font-size: 14px;">PI (2025 - 2027, supported by National Natural Science Foundation Youth Fund)</span>
+
+      <!-- 可展开项目列表 -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- 项目1：LogicStrokePainter: AI Human-like Painting Research -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj3')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">LogicStrokePainter: AI Human-like Painting Research</h3>
+            <span id="proj3Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">PI (2025 - 2027, supported by National Natural Science Foundation Youth Fund)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj3Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            This project explores human-like painting logic using AI, focusing on: 
+            <strong>Creative Decision Modeling</strong>, <strong>Context-Aware Stroke Generation</strong>, and <strong>Interactive Art Refinement</strong>. 
+            It aims to bridge the gap between computational efficiency and artistic creativity.
+          </div>
         </div>
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>AI-Generated Art Curation System</strong><br>
-          <span style="color: #999; font-size: 14px;">Co-PI (2024 - 2026, supported by Guangdong University of Technology Innovation Project)</span>
+
+        <!-- 项目2：AI-Generated Art Curation System -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj4')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">AI-Generated Art Curation System</h3>
+            <span id="proj4Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">Co-PI (2024 - 2026, supported by Guangdong University of Technology Innovation Project)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj4Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            Focuses on curating AI-generated artworks using <strong>Style Clustering</strong>, <strong>Thematic Tagging</strong>, and <strong>User Preference Modeling</strong>. 
+            It supports artists in discovering and refining creative directions, funded by Guangdong University of Technology.
+          </div>
         </div>
+
       </div>
     </div>
-    
+
     <!-- 研究方向3：Computational Art -->
     <div>
-      <h3 style="font-size: 20px; color: #333; margin-bottom: 10px;">3. Computational Art</h3>
-      <p style="color: #666; margin-bottom: 15px;">
+      <h2 style="color: #333; font-size: 22px; border-left: 3px solid #4ecdc4; padding-left: 10px; margin-bottom: 15px;">
+        3. Computational Art
+      </h2>
+      <p style="color: #666; margin-bottom: 20px;">
         Explores the use of computational tools to enhance artistic expression, including 
         <strong>digital art creation frameworks</strong> and <strong>artistic style transfer</strong>.
       </p>
-      <!-- 项目列表 -->
-      <div style="display: flex; flex-direction: column; gap: 15px;">
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>Computational Art Style Transfer Platform</strong><br>
-          <span style="color: #999; font-size: 14px;">PI (2023 - 2025, supported by Guangdong Cultural and Creative Project)</span>
+
+      <!-- 可展开项目列表 -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- 项目1：Computational Art Style Transfer Platform -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj5')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">Computational Art Style Transfer Platform</h3>
+            <span id="proj5Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">PI (2023 - 2025, supported by Guangdong Cultural and Creative Project)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj5Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            Develops a platform for artistic style transfer using <strong>Deep Neural Networks</strong>, <strong>Feature Extraction</strong>, and <strong>Real-time Rendering</strong>. 
+            It empowers artists to experiment with cross-style creations, funded by Guangdong Cultural and Creative Project.
+          </div>
         </div>
-        <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #4ecdc4;">
-          <strong>AI-Assisted Digital Art Creation Tool</strong><br>
-          <span style="color: #999; font-size: 14px;">Co-PI (2022 - 2024, supported by School of Art and Design Innovation Fund)</span>
+
+        <!-- 项目2：AI-Assisted Digital Art Creation Tool -->
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; cursor: pointer;" onclick="toggleDetail('proj6')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #333; margin: 0;">AI-Assisted Digital Art Creation Tool</h3>
+            <span id="proj6Arrow" style="color: #4ecdc4; font-size: 18px;">+</span>
+          </div>
+          <p style="color: #999; margin: 0;">Co-PI (2022 - 2024, supported by School of Art and Design Innovation Fund)</p>
+          <!-- 隐藏的详情内容 -->
+          <div id="proj6Detail" style="display: none; margin-top: 15px; color: #666; line-height: 1.6;">
+            Integrates AI to assist digital art creation, featuring <strong>Intelligent Brush Suggestions</strong>, <strong>Composition Optimization</strong>, and <strong>Style Adaptation</strong>. 
+            It simplifies complex artistic techniques, supported by the School of Art and Design.
+          </div>
         </div>
+
       </div>
     </div>
+
   </section>
 </div>
+
+<!-- 交互逻辑：控制展开/收起 -->
+<script>
+function toggleDetail(projId) {
+  const detail = document.getElementById(projId + 'Detail');
+  const arrow = document.getElementById(projId + 'Arrow');
+  
+  if (detail.style.display === 'none' || detail.style.display === '') {
+    detail.style.display = 'block';
+    arrow.textContent = '−'; // 收起符号
+  } else {
+    detail.style.display = 'none';
+    arrow.textContent = '+'; // 展开符号
+  }
+}
+</script>
 
       <!-- Publications 页面 -->
       <div id="publications" class="page">
