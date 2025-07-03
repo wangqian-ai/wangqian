@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | 个人主页</title>
+  <!-- 外部资源 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#36CFC9',
+            neutral: '#F5F7FA',
+            dark: '#1D2129',
+          },
+          fontFamily: {
+            sans: ['Noto Sans SC', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+      }
+      .nav-shadow {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-neutral text-dark antialiased">
+  <!-- 导航栏 -->
+  <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <a href="#" class="text-2xl font-bold text-primary">Your Name</a>
+        
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#about" class="font-medium hover:text-primary transition-colors">关于</a>
+          <a href="#research" class="font-medium hover:text-primary transition-colors">研究</a>
+          <a href="#publications" class="font-medium hover:text-primary transition-colors">成果</a>
+          <a href="#projects" class="font-medium hover:text-primary transition-colors">项目</a>
+          <a href="#contact" class="font-medium hover:text-primary transition-colors">联系</a>
+        </nav>
+        
+        <!-- 移动端菜单按钮 -->
+        <button class="md:hidden text-dark hover:text-primary" id="mobile-menu-button">
+          <i class="fa fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- 移动端导航 -->
+    <div class="md:hidden hidden bg-white nav-shadow absolute w-full" id="mobile-menu">
+      <div class="container mx-auto px-4 py-3 space-y-3">
+        <a href="#about" class="block py-2 font-medium hover:text-primary transition-colors">关于</a>
+        <a href="#research" class="block py-2 font-medium hover:text-primary transition-colors">研究</a>
+        <a href="#publications" class="block py-2 font-medium hover:text-primary transition-colors">成果</a>
+        <a href="#projects" class="block py-2 font-medium hover:text-primary transition-colors">项目</a>
+        <a href="#contact" class="block py-2 font-medium hover:text-primary transition-colors">联系</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center">
+        <div class="lg:w-1/2 mb-10 lg:mb-0">
+          <h1 class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight mb-4">
+            <span class="text-primary">Your Name</span>, PhD
+          </h1>
+          <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 mb-8 max-w-xl">
+            计算机科学研究者 | 人工智能工程师 | 开源项目贡献者
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <a href="#research" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              查看研究
+            </a>
+            <a href="#contact" class="px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-all">
+              联系我
+            </a>
+          </div>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+              <i class="fa fa-github text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+              <i class="fa fa-linkedin text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+              <i class="fa fa-twitter text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+              <i class="fa fa-google text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        <div class="lg:w-1/2 flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-primary/10 rounded-full blur-xl"></div>
+            <img src="assets/img/avatar.jpg" alt="个人照片" class="relative rounded-full w-64 h-64 object-cover border-8 border-white shadow-2xl">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于部分 -->
+  <section id="about" class="py-20 bg-neutral">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">关于我</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-xl shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div>
+            <p class="text-lg text-gray-600 leading-relaxed mb-6">
+              我是一名专注于人工智能与机器学习的研究者，目前在[机构名称]从事[具体领域]的研究工作。我的研究兴趣包括计算机视觉、自然语言处理和机器人学习。
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed mb-6">
+              拥有[X]年的学术研究经验，在顶级会议和期刊上发表过多篇论文，并参与多个国家级科研项目。同时，我也热衷于开源社区，积极贡献代码和技术文章。
+            </p>
+            <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+              下载简历 <i class="fa fa-download ml-2"></i>
+            </a>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">研究领域</h3>
+            <div class="space-y-3">
+              <div>
+                <span class="font-medium">计算机视觉</span>
+                <p class="text-gray-600 text-sm">目标检测、图像分割、姿态估计</p>
+              </div>
+              <div>
+                <span class="font-medium">自然语言处理</span>
+                <p class="text-gray-600 text-sm">预训练模型、语义理解、对话系统</p>
+              </div>
+              <div>
+                <span class="font-medium">机器人学习</span>
+                <p class="text-gray-600 text-sm">强化学习、模仿学习、多智能体系统</p>
+              </div>
+              <div>
+                <span class="font-medium">机器学习理论</span>
+                <p class="text-gray-600 text-sm">表示学习、优化算法、可解释AI</p>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4">教育背景</h3>
+            <div class="space-y-3">
+              <div>
+                <span class="font-medium">博士学位</span>
+                <p class="text-gray-600 text-sm">[大学名称], [专业], 2018-2023</p>
+              </div>
+              <div>
+                <span class="font-medium">硕士学位</span>
+                <p class="text-gray-600 text-sm">[大学名称], [专业], 2016-2018</p>
+              </div>
+              <div>
+                <span class="font-medium">学士学位</span>
+                <p class="text-gray-600 text-sm">[大学名称], [专业], 2012-2016</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究部分 -->
+  <section id="research" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">研究方向</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 研究方向1 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fa fa-eye text-5xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">视觉感知与理解</h3>
+            <p class="text-gray-600 mb-4">
+              研究如何让计算机像人类一样理解视觉世界，包括场景理解、物体识别和动态行为分析。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 研究方向2 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fa fa-language text-5xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">自然语言处理</h3>
+            <p class="text-gray-600 mb-4">
+              探索语言理解与生成的前沿技术，专注于构建更具上下文感知能力的智能对话系统。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 研究方向3 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fa fa-robot text-5xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">机器人学习</h3>
+            <p class="text-gray-600 mb-4">
+              研究机器人在复杂环境中的自主学习与决策，结合强化学习与模仿学习技术。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium">
+          查看全部研究方向 <i class="fa fa-long-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 出版物部分 -->
+  <section id="publications" class="py-20 bg-neutral">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">学术成果</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          <!-- 出版物1 -->
+          <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="md:w-1/3">
+                <img src="assets/projects/project1.jpg" alt="论文封面" class="w-full h-48 object-cover rounded-lg">
+              </div>
+              <div class="md:w-2/3">
+                <h3 class="text-xl font-bold mb-2">Title of the Paper: A Novel Approach to Visual Understanding</h3>
+                <p class="text-gray-600 mb-3">
+                  <span class="font-medium">Your Name</span>, Co-Author1, Co-Author2<br>
+                  <span class="text-primary">IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</span>, 2023
+                </p>
+                <p class="text-gray-600 mb-4">
+                  本文提出了一种基于跨模态对比学习的视觉理解新框架，在多个基准数据集上取得了state-of-the-art的结果。
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-code mr-1"></i> Code
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-database mr-1"></i> Dataset
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 出版物2 -->
+          <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="md:w-1/3">
+                <img src="assets/projects/project2.jpg" alt="论文封面" class="w-full h-48 object-cover rounded-lg">
+              </div>
+              <div class="md:w-2/3">
+                <h3 class="text-xl font-bold mb-2">Title of the Paper: Efficient Language Models for Resource-Constrained Devices</h3>
+                <p class="text-gray-600 mb-3">
+                  Co-Author1, <span class="font-medium">Your Name</span>, Co-Author2<br>
+                  <span class="text-primary">Neural Information Processing Systems (NeurIPS)</span>, 2022
+                </p>
+                <p class="text-gray-600 mb-4">
+                  针对边缘设备计算资源有限的问题，我们提出了一种轻量级语言模型压缩与优化方法，在保持性能的同时大幅降低计算开销。
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-code mr-1"></i> Code
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-slideshare mr-1"></i> Slides
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 出版物3 -->
+          <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="md:w-1/3">
+                <img src="assets/projects/project3.jpg" alt="论文封面" class="w-full h-48 object-cover rounded-lg">
+              </div>
+              <div class="md:w-2/3">
+                <h3 class="text-xl font-bold mb-2">Title of the Paper: Reinforcement Learning for Robotic Manipulation</h3>
+                <p class="text-gray-600 mb-3">
+                  Co-Author1, Co-Author2, <span class="font-medium">Your Name</span><br>
+                  <span class="text-primary">International Conference on Robotics and Automation (ICRA)</span>, 2021
+                </p>
+                <p class="text-gray-600 mb-4">
+                  本文研究了机器人操作中的强化学习问题，提出了一种结合模仿学习的分层强化学习框架，显著提高了机器人在复杂任务中的学习效率。
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-youtube-play mr-1"></i> Demo
+                  </a>
+                  <a href="#" class="text-primary hover:underline">
+                    <i class="fa fa-citation mr-1"></i> BibTeX
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="https://scholar.google.com/citations?user=your_id" class="inline-flex items-center px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium">
+            查看全部学术成果 <i class="fa fa-graduation-cap ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目部分 -->
+  <section id="projects" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">开源项目</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 项目1 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('assets/projects/project4.jpg')"></div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">AI Research Toolkit</h3>
+              <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Python</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              一个用于人工智能研究的工具集合，包含数据处理、模型训练、结果可视化等功能模块，旨在加速研究人员的实验流程。
+            </p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fa fa-star text-yellow-400 mr-1"></i> 1.2k Stars
+              <span class="mx-2">•</span>
+              <i class="fa fa-code-fork mr-1"></i> 350 Forks
+            </div>
+            <a href="https://github.com/yourusername/ai-research-toolkit" class="block text-center py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+              访问项目 <i class="fa fa-github ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 项目2 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('assets/projects/project5.jpg')"></div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Lightweight Vision Models</h3>
+              <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">PyTorch</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              轻量级视觉模型库，包含各种高效的卷积神经网络和Transformer架构，针对移动设备和边缘计算进行了优化。
+            </p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fa fa-star text-yellow-400 mr-1"></i> 850 Stars
+              <span class="mx-2">•</span>
+              <i class="fa fa-code-fork mr-1"></i> 210 Forks
+            </div>
+            <a href="https://github.com/yourusername/lightweight-vision-models" class="block text-center py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+              访问项目 <i class="fa fa-github ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 项目3 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('assets/projects/project6.jpg')"></div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">RoboLearn</h3>
+              <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Python</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              机器人学习框架，提供统一的接口用于训练和评估机器人控制策略，支持强化学习、模仿学习等多种学习范式。
+            </p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fa fa-star text-yellow-400 mr-1"></i> 530 Stars
+              <span class="mx-2">•</span>
+              <i class="fa fa-code-fork mr-1"></i> 140 Forks
+            </div>
+            <a href="https://github.com/yourusername/robolern" class="block text-center py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+              访问项目 <i class="fa fa-github ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 项目4 -->
+        <div class="bg-neutral rounded-xl overflow-hidden card-hover">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('assets/projects/project7.jpg')"></div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">NLP Playground</h3>
+              <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">TensorFlow</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              自然语言处理实验平台，提供交互式界面用于探索和理解各种NLP模型的工作原理，适合教育和研究使用。
+            </p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fa fa-star text-yellow-400 mr-1"></i> 320 Stars
+              <span class="mx-2">•</span>
+              <i class="fa fa-code-fork mr-1"></i> 95 Forks
+            </div>
+            <a href="https://github.com/yourusername/nlp-playground" class="block text-center py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+              访问项目 <i class="fa fa-github ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="https://github.com/yourusername" class="inline-flex items-center px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium">
+          查看全部开源项目 <i class="fa fa-github ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系部分 -->
+  <section id="contact" class="py-20 bg-neutral">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">联系我</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white p-8 md:p-10 rounded-xl shadow-sm">
+          <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="您的姓名">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="您的邮箱">
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="subject" class="block text-gray-700 font-medium mb-2">主题</label>
+              <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="消息主题">
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block text-gray-700 font-medium mb-2">消息</label>
+              <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="请输入您的消息..."></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium">
+                发送消息
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl text-center shadow-sm">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-envelope text-primary"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">邮箱</h3>
+            <p class="text-gray-600">your.name@example.com</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl text-center shadow-sm">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-map-marker text-primary"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">地址</h3>
+            <p class="text-gray-600">北京市海淀区中关村大街</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl text-center shadow-sm">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-clock-o text-primary"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">工作时间</h3>
+            <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <a href="#" class="text-2xl font-bold">Your Name</a>
+          <p class="mt-2 text-gray-400">人工智能研究者 | 开源技术爱好者</p>
+        </div>
+        <div class="flex space-x-6 mb-6 md:mb-0">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-github text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-linkedin text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-twitter text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-google text-xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <p>&copy; 2023 Your Name. 保留所有权利。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white', 'nav-shadow');
+      } else {
+        navbar.classList.remove('bg-white', 'nav-shadow');
+      }
+    });
+    
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          // 关闭移动菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+          
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+    
