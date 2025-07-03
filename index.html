@@ -1,103 +1,108 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Henry Hong-Ning Dai</title>
   <style>
-    /* 全局样式重置 */
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      font-family: "Helvetica Neue", Arial, sans-serif;
     }
 
     body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       display: flex;
-      min-height: 100vh;
-      background-color: #f5f7fa;
+      overflow-x: hidden;
     }
 
-    /* 左侧导航栏 */
+    /* 左侧导航栏样式 */
     .sidebar {
       width: 220px;
-      background-color: #2c3e50;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background-color: #333;
+      color: white;
       padding: 20px;
       position: fixed;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 100;
     }
 
-    .sidebar-header {
+    .sidebar .profile {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .sidebar-header img {
+    .sidebar .profile img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      border: 3px solid #fff;
       margin-bottom: 10px;
+      border: 3px solid #007bff;
     }
 
-    .sidebar-header h1 {
+    .sidebar .profile h2 {
       font-size: 18px;
-      margin-bottom: 5px;
     }
 
-    .sidebar-header p {
+    .sidebar .profile p {
       font-size: 14px;
-      color: #d1d1d1;
+      color: #ccc;
     }
 
-    .sidebar-nav ul {
+    .sidebar nav ul {
       list-style: none;
     }
 
-    .sidebar-nav li {
-      margin: 15px 0;
+    .sidebar nav ul li {
+      margin: 10px 0;
     }
 
-    .sidebar-nav a {
-      color: #fff;
+    .sidebar nav ul li a {
+      color: white;
       text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
+      display: block;
+      padding: 5px;
+      transition: background-color 0.3s ease;
     }
 
-    .sidebar-nav a:hover {
-      color: #3498db;
+    .sidebar nav ul li a:hover {
+      background-color: #555;
     }
 
-    .sidebar-nav a.active {
-      color: #3498db;
-      font-weight: bold;
+    .sidebar nav ul li a.active {
+      background-color: #007bff;
     }
 
-    /* 底部外链 */
-    .sidebar-footer {
+    .sidebar .social-links {
       display: flex;
-      gap: 10px;
       justify-content: center;
+      gap: 15px;
       margin-top: 20px;
     }
 
-    .sidebar-footer a {
-      color: #fff;
+    .sidebar .social-links a {
+      color: white;
       font-size: 20px;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
-    .sidebar-footer a:hover {
-      color: #3498db;
+    .sidebar .social-links a:hover {
+      color: #007bff;
     }
 
-    /* 右侧内容区 */
+    .sidebar .copyright {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* 右侧内容区样式 */
     .main-content {
       margin-left: 220px;
       width: calc(100% - 220px);
@@ -106,7 +111,6 @@
     /* 页面顶部大标题区域 */
     .hero-section {
       height: 300px;
-      background-image: url('https://picsum.photos/id/1015/1920/800');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -144,71 +148,58 @@
 
     .page {
       display: none;
-      animation: fadeIn 0.5s ease-in-out;
+      min-height: calc(100vh - 300px);
     }
 
     .page.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .section {
+      margin-bottom: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .section-title {
-      font-size: 28px;
-      color: #2c3e50;
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .section h2 {
+      font-size: 24px;
       margin-bottom: 20px;
-      border-left: 5px solid #3498db;
+      color: #333;
+      border-left: 5px solid #007bff;
       padding-left: 10px;
     }
 
-    .section-content {
-      line-height: 1.8;
-      color: #555;
-      text-align: justify;
+    .section p {
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 15px;
     }
 
-    /* 响应式适配 */
+    /* 其他模块样式保持不变... */
+
+    /* 响应式设计 - 小屏幕设备 */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
       }
-
+      
       .sidebar {
         width: 100%;
         height: auto;
         position: relative;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 20px;
       }
-
-      .sidebar-header {
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-      }
-
-      .sidebar-header img {
-        width: 60px;
-        height: 60px;
-        margin-right: 10px;
-      }
-
-      .sidebar-header h1 {
-        font-size: 16px;
-      }
-
-      .sidebar-nav ul {
-        display: flex;
-        gap: 20px;
-      }
-
-      .sidebar-nav li {
-        margin: 0;
+      
+      .main-content {
+        margin-left: 0;
+        width: 100%;
       }
 
       .hero-section {
@@ -222,12 +213,6 @@
       .hero-content p {
         font-size: 16px;
       }
-
-      .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px;
-      }
     }
   </style>
 </head>
@@ -235,43 +220,51 @@
   <!-- 左侧导航栏 -->
   <aside class="sidebar">
     <div>
-      <div class="sidebar-header">
-        <img src="https://via.placeholder.com/100" alt="Profile" />
-        <div>
-          <h1>Henry Hong-Ning Dai</h1>
-          <p>Hong Kong Baptist University</p>
-        </div>
+      <div class="profile">
+        <img src="https://via.placeholder.com/100" alt="Profile Photo">
+        <h2>Henry Hong-Ning Dai</h2>
+        <p>Hong Kong Baptist University</p>
       </div>
-      <nav class="sidebar-nav">
+      <nav>
         <ul>
-          <li><a href="#biography" class="active">Biography</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#students">Students</a></li>
-          <li><a href="#teaching">Teaching</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#biography" class="nav-link active" data-page="biography">Biography</a></li>
+          <li><a href="#resume" class="nav-link" data-page="resume">Resume</a></li>
+          <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
+          <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
+          <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+          <li><a href="#students" class="nav-link" data-page="students">Students</a></li>
+          <li><a href="#teaching" class="nav-link" data-page="teaching">Teaching</a></li>
+          <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
       </nav>
+      <div class="social-links">
+        <a href="#" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" target="_blank" title="Google Scholar">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="#" target="_blank" title="ResearchGate">
+          <i class="fab fa-researchgate"></i>
+        </a>
+        <a href="#" target="_blank" title="ORCID">
+          <i class="fab fa-orcid"></i>
+        </a>
+      </div>
     </div>
-    <!-- 底部外链 -->
-    <div class="sidebar-footer">
-      <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">in</a>
-      <a href="https://scholar.google.com/" target="_blank" title="Google Scholar">a</a>
-      <a href="https://github.com/" target="_blank" title="GitHub">RG</a>
-      <a href="https://orcid.org/" target="_blank" title="ORCID">OR</a>
+    <div class="copyright">
+      <p>Copyright by Henry H. N. Dai</p>
     </div>
   </aside>
 
   <!-- 右侧内容区 -->
   <div class="main-content">
     <!-- 页面顶部大标题区域 -->
-    <div class="hero-section">
+    <div class="hero-section" id="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1>Henry Hong-Ning Dai</h1>
-        <p>Associate Professor</p>
+        <h1 id="hero-title">Biography</h1>
+        <p id="hero-subtitle">Associate Professor</p>
         <p>Department of Computer Science, Hong Kong Baptist University</p>
       </div>
     </div>
@@ -279,97 +272,163 @@
     <div class="page-content">
       <!-- Biography 页面 -->
       <div id="biography" class="page active">
-        <h2 class="section-title">Biography</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Biography</h2>
           <p>Henry Hong-Ning Dai is an associate professor with the Department of Computer Science, Hong Kong Baptist University, Hong Kong. Before joining Hong Kong Baptist University, he was with the School of Computer Science and Engineering at Macau University of Science and Technology as an assistant professor/associate professor from 2010 to 2021, and the Department of Computing and Decision Sciences, Lingnan University, Hong Kong as an associate professor from 2021 to 2022. He obtained a Ph.D. in Computer Science and Engineering from the Department of Computer Science and Engineering at the Chinese University of Hong Kong and a D.Eng. in Computer Technology Application from the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He worked in the Department of Information Engineering at the Chinese University of Hong Kong and the Hong Kong Applied Science and Technology Research Institute after his Ph.D. study. He is a senior member of ACM, a senior member of IEEE, and a senior member of the European Alliance for Innovation (EAI).</p>
-          <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 ESI-highly-cited papers by Clarivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
-          <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editors in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
+          <p>His research interests include the Internet of Things, Blockchains, Big Data Analytics. He has co-authored/co-edited four monographs/books and published more than 200 peer-reviewed papers in top-tier journals and conferences, including the IEEE Communications Surveys & Tutorials, Proceedings of the IEEE, ACM Computing Surveys, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Knowledge and Data Engineering, IEEE Transactions on Industrial Informatics, IEEE Transactions on Vehicular Technology, ACM Transactions on Intelligent Systems and Technology, IEEE Transactions on Cloud Computing, IEEE Transactions on Intelligent Transportation Systems, IEEE Internet of Things Journal, IEEE Transactions on Vehicular Communications, IEEE Systems Journal, INFOCOM, etc. He has 7 HIGHLY-cited papers by Clavivate Analytics, 1 IEEE Outstanding Paper Award conferred by IEEE CPSCom 2019, and 1 Best Paper Award conferred by EAI CloudComp 2020, the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) the BOC Excellent Research Award of Macau University of Science and Technology in 2020. He was also included in the world's top 2% scientists for career-long impact by Stanford University, USA (by John P. A. Ioannidis of Stanford University) </p>
+          <p>Henry has been actively involved in a number of professional activities. In particular, he has also served as Associate Editors/Editor in IEEE Transactions on Intelligent Transportation Systems, IEEE Transactions on Industrial Informatics, Ad Hoc Networks (Elsevier), Connection Science (Taylor & Francis), and International Journal of Cognitive Computing in Engineering (Elsevier), Technical Committee of Computer Communications (Elsevier), and topic editor of Sensors, Proficy, He has served as Associate Editors in IEEE Systems Journal and IEEE Access. Meanwhile, he has served as guest editor of IEEE Transactions on Industrial Informatics and IEEE Transactions on Emerging Topics in Computing. He has also served as General Chairs of 2021 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2021), TPC Chairs of the inaugural IEEE Symposium on Blockchain at IEEE SERVICES 2021, TPC Chairs of Airbone and Maritime Mobile Systems and Services at the 2021 IEEE 94th Vehicular Technology Conference (VTC2021-Fall), TPC chairs of 2020 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2020) and 2019 International Conference on Blockchain and Trustworthy Systems (BlockSys' 2019), TPC co-chair of a special session on "Blockchain technology in industry" in conjunction with 2020 IEEE 16th International Conference on Automation Science and Engineering (CASE), TPC co-chair of the special session on "Blockchain for Industrial Internet-of-Things" in conjunction with IEEE International Conference on Industrial Cyber-Physical Systems 2019, TPC co-chair of the special session on "Recent Advances in Security and Privacy in Wireless Networking Systems" in conjunction with the 10th International Conference on Information, Communications and Signal Processing, 2015. He has been a reviewer for more than 40 journals. He is also a Founding Member of the IEEE Special Interest Groups (SIG) on Intelligent Internet Edge (IIE) at IEEE.</p>
           <p>He also holds visiting positions at the Department of Computer Science and Engineering in the Hong Kong University of Science and Technology, School of Electrical Engineering and Telecommunications in the University of New South Wales, Hong Kong Applied Science and Technology Research Institute, School of Data and Computer Science in Sun Yat-sen University (Guangzhou, China), School of Computer Science and Engineering in University of Electronic Science and Technology of China, School of Mechanical and Automotive Engineering in South China University of Technology. His Dijkstra number is four and Erdos number is three.</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Resume 页面（示例结构，需补充内容） -->
+      <!-- Resume 页面 -->
       <div id="resume" class="page">
-        <h2 class="section-title">Resume</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Resume</h2>
           <p>Add your resume content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Research 页面（示例结构，需补充内容） -->
+      <!-- Research 页面 -->
       <div id="research" class="page">
-        <h2 class="section-title">Research</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Research</h2>
           <p>Add your research content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Publications 页面（示例结构，需补充内容） -->
+      <!-- Publications 页面 -->
       <div id="publications" class="page">
-        <h2 class="section-title">Publications</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Publications</h2>
           <p>Add your publications content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Services 页面（示例结构，需补充内容） -->
+      <!-- Services 页面 -->
       <div id="services" class="page">
-        <h2 class="section-title">Services</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Services</h2>
           <p>Add your services content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Students 页面（示例结构，需补充内容） -->
+      <!-- Students 页面 -->
       <div id="students" class="page">
-        <h2 class="section-title">Students</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Students</h2>
           <p>Add your students content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Teaching 页面（示例结构，需补充内容） -->
+      <!-- Teaching 页面 -->
       <div id="teaching" class="page">
-        <h2 class="section-title">Teaching</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Teaching</h2>
           <p>Add your teaching content here...</p>
-        </div>
+        </section>
       </div>
 
-      <!-- Contact 页面（示例结构，需补充内容） -->
+      <!-- Contact 页面 -->
       <div id="contact" class="page">
-        <h2 class="section-title">Contact</h2>
-        <div class="section-content">
+        <section class="section">
+          <h2>Contact</h2>
           <p>Add your contact content here...</p>
-        </div>
+        </section>
       </div>
     </div>
   </div>
 
-  <!-- 导航交互逻辑 -->
   <script>
-    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    // 页面配置
+    const pageConfig = {
+      'biography': {
+        title: 'Biography',
+        subtitle: 'Associate Professor',
+        backgroundImage: 'https://picsum.photos/id/1015/1920/800'
+      },
+      'resume': {
+        title: 'Resume',
+        subtitle: 'Academic Background',
+        backgroundImage: 'https://picsum.photos/id/1024/1920/800'
+      },
+      'research': {
+        title: 'Research',
+        subtitle: 'Areas of Interest',
+        backgroundImage: 'https://picsum.photos/id/1071/1920/800'
+      },
+      'publications': {
+        title: 'Publications',
+        subtitle: 'Academic Works',
+        backgroundImage: 'https://picsum.photos/id/1/1920/800'
+      },
+      'services': {
+        title: 'Services',
+        subtitle: 'Professional Activities',
+        backgroundImage: 'https://picsum.photos/id/1025/1920/800'
+      },
+      'students': {
+        title: 'Students',
+        subtitle: 'Supervised Students',
+        backgroundImage: 'https://picsum.photos/id/1060/1920/800'
+      },
+      'teaching': {
+        title: 'Teaching',
+        subtitle: 'Courses & Lectures',
+        backgroundImage: 'https://picsum.photos/id/1040/1920/800'
+      },
+      'contact': {
+        title: 'Contact',
+        subtitle: 'Get in Touch',
+        backgroundImage: 'https://picsum.photos/id/1048/1920/800'
+      }
+    };
+
+    // 导航逻辑
+    const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
+    const heroSection = document.getElementById('hero-section');
+    const heroTitle = document.getElementById('hero-title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
 
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        // 移除所有激活状态
-        navLinks.forEach(link => link.classList.remove('active'));
-        pages.forEach(page => page.classList.remove('active'));
-        // 添加当前激活状态
+        const pageId = link.getAttribute('href').substring(1);
+        const pageData = pageConfig[pageId];
+
+        // 更新导航栏状态
+        navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        const targetId = link.getAttribute('href').substring(1);
-        document.getElementById(targetId).classList.add('active');
-        // 更新URL（可选，若需保留锚点）
-        window.history.pushState(null, null, `#${targetId}`);
+
+        // 更新页面内容
+        pages.forEach(page => {
+          page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+
+        // 更新英雄区域
+        heroTitle.textContent = pageData.title;
+        heroSubtitle.textContent = pageData.subtitle;
+        heroSection.style.backgroundImage = `url('${pageData.backgroundImage}')`;
+
+        // 更新URL
+        window.history.pushState(null, null, `#${pageId}`);
       });
     });
 
-    // 处理直接访问锚点（如刷新页面）
+    // 初始化页面
     window.addEventListener('load', () => {
       const hash = window.location.hash.substring(1) || 'biography';
-      document.querySelector(`.sidebar-nav a[href="#${hash}"]`).click();
+      const pageData = pageConfig[hash];
+      
+      // 触发页面切换
+      document.querySelector(`.nav-link[href="#${hash}"]`).click();
+      
+      // 初始化英雄区域
+      heroTitle.textContent = pageData.title;
+      heroSubtitle.textContent = pageData.subtitle;
+      heroSection.style.backgroundImage = `url('${pageData.backgroundImage}')`;
     });
   </script>
 </body>
