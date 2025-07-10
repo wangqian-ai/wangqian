@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qian Wang</title>
+  <!-- 引入Font Awesome图标库（修复外部链接图标不显示问题） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -183,7 +185,21 @@
       margin-bottom: 15px;
     }
 
-    /* 其他模块样式保持不变... */
+    /* 联系信息样式补充 */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-item i {
+      color: #007bff;
+      width: 20px;
+    }
 
     /* 响应式设计 - 小屏幕设备 */
     @media (max-width: 768px) {
@@ -387,7 +403,7 @@
 </div>
 
 <!-- Resume 页面 - 修复排版版 -->
-<div id="resume" class="page active">
+<div id="resume" class="page">
   <section class="section" style="background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     
     <!-- 工作经历 -->
@@ -513,14 +529,9 @@
 </div>
 
 <!-- Research 页面 - 可展开版 -->
-<div id="research" class="page active">
+<div id="research" class="page">
   <section class="section" style="background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     
-    <!-- 顶部背景栏（模仿目标样式） -->
-<!--     <div style="background-color: #4ecdc4; color: white; padding: 20px; margin-bottom: 20px;">
-      <h1 style="font-size: 28px; margin: 0;">Research</h1>
-    </div> -->
-
     <!-- 研究方向概述 -->
     <p style="margin-bottom: 30px; color: #666;">
       Qian Wang's research interests include <strong>computer vision</strong>, <strong>AI painting</strong>, and <strong>computational art</strong>.
@@ -930,11 +941,28 @@ filterPub('all');
         </section>
       </div>
 
-      <!-- Contact 页面 -->
+      <!-- Contact 页面（已补充完整） -->
       <div id="contact" class="page">
         <section class="section">
           <h2>Contact</h2>
-          <p>Add your contact content here...</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>Email: anrogim@outlook.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>Phone: +86 15167111393</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-building"></i>
+              <span>Affiliation: School of Art and Design, Guangdong University of Technology</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Address: Guangzhou, Guangdong Province, China</span>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -945,7 +973,7 @@ filterPub('all');
     const pageConfig = {
       'biography': {
         title: 'Biography',
-        subtitle: 'Associate Professor',
+        subtitle: 'Lecturer',
         backgroundImage: 'https://picsum.photos/id/1015/1920/800'
       },
       'resume': {
